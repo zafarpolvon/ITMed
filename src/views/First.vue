@@ -6,10 +6,10 @@
     </div>
     <div class="med mt-24">
       <div class="med__box">
-        <div class="container mx-auto py-20 px-4 xl:px-0 md:px-0">
+        <div class="container mx-auto py-20">
           <form action="">
             <h3 class="med__step">Шаг 1.</h3>
-            <div class="grid grid-cols-1 xl:grid-cols-3 md:grid-cols-3 gap-4 mt-10">
+            <div class="grid grid-cols-3 gap-4 mt-10">
               <Select :options="countries"
                     :stock="'Выберите страну'"
                     :value="infoUser.countries ? infoUser.countries.name : ''"
@@ -25,10 +25,10 @@
                     @input="typeSubmit($event)"
               />
             </div>
-            <div class="grid grid-cols-1 xl:grid-cols-3 md:grid-cols-3 gap-4 mt-5">
+            <div class="grid grid-cols-3 gap-4 mt-5">
               <div class="grid grid-cols-2 gap-4">
-                <Calendar :value="infoUser.from ? infoUser.from : ''" :title="'Въезд'" @datevalue="fromDate($event)" />
-                <Calendar :value="infoUser.to ? infoUser.to : ''" :title="'Выезд'" @datevalue="toDate($event)" />
+                <Calendar :title="'Въезд'" @datevalue="fromDate($event)" />
+                <Calendar :title="'Выезд'" @datevalue="toDate($event)" />
               </div>
               <Select :options="dateTry"
                     :stock="'Выберите заезд'"
@@ -55,6 +55,7 @@
                   <span>Продолжить</span>
                   <i class="fas fa-chevron-right"></i>
                 </a>
+
               </div>
             </div>
           </form>
@@ -93,8 +94,6 @@ export default {
     this.type = this.infoUser.types ? this.infoUser.types : {}
     this.date = this.infoUser.try ? this.infoUser.try : {}
     this.time = this.infoUser.timespent ? this.infoUser.timespent : {}
-    this.from = this.infoUser.from ? this.infoUser.from : ''
-    this.to = this.infoUser.to ? this.infoUser.to : ''
   },
   methods: {
     countrySubmit (event) {
@@ -231,17 +230,5 @@ export default {
   }
   .med__save i {
     margin-left: 10px;
-  }
-  @media (min-width:320px) {
-    .med__footer {
-      display: flex;
-      flex-direction: column;
-    }
-    .med__save {
-      margin-top: 30px;
-    }
-    .med__cost {
-      padding: 20px 20px;
-    }
   }
 </style>
